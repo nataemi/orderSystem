@@ -316,7 +316,7 @@ public static void main (String args[]) throws IOException{
 		    	check = false;
 		    	break;}
 		    default: 
-		    	System.out.println("Wprowadzono błędną komendę.");
+		    	System.out.println("Incorrect command.");
 	    	}
 	    }
     }
