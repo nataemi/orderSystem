@@ -1,6 +1,5 @@
 
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -316,7 +315,7 @@ public static void main (String args[]) throws IOException{
 		    	check = false;
 		    	break;}
 		    default: 
-		    	System.out.println("Incorrect command.");
+		    	System.out.println("Wprowadzono błędną komendę.");
 	    	}
 	    }
     }
@@ -330,6 +329,5 @@ public static void main (String args[]) throws IOException{
 	
 }
 }
-
 
 
