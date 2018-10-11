@@ -6,16 +6,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
 ArrayList<Order> orders;
-
+static int reportNumber=0;
 
 Main(String[] array) throws IOException{
 	
@@ -48,10 +45,7 @@ void printOrders(boolean c) throws FileNotFoundException{
 		}
 	}
 	else{
-		LocalDateTime now = LocalDateTime.now();
-		String isoFormat = DateTimeFormatter.ISO_INSTANT.format(now.toInstant(ZoneOffset.UTC));
-		System.out.println(isoFormat);
-		PrintWriter pw = new PrintWriter(new File(isoFormat + ".csv"));
+		PrintWriter pw = new PrintWriter(new File("report-" + Main.reportNumber + ".csv"));
 		StringBuilder sb = new StringBuilder();
 	    sb.append("All orders: ");
 	    sb.append("\n");
@@ -70,10 +64,7 @@ void amountOfOrders(boolean c) throws FileNotFoundException{
 		System.out.println("Amount of orders: " + orders.size());
 	}
 	else{
-		LocalDateTime now = LocalDateTime.now();
-		String isoFormat = DateTimeFormatter.ISO_INSTANT.format(now.toInstant(ZoneOffset.UTC));
-		System.out.println(isoFormat);
-		PrintWriter pw = new PrintWriter(new File(isoFormat + ".csv"));
+		PrintWriter pw = new PrintWriter(new File("report-" + Main.reportNumber + ".csv"));
 	    pw.write("Amount of orders: " + orders.size());
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -89,10 +80,7 @@ void amountOfOrdersForClientWithId(String Id,boolean c) throws FileNotFoundExcep
 		System.out.println("Amount of orders for client with Id: " + Id+ " is: " + amount);
 	}
 	else{
-		LocalDateTime now = LocalDateTime.now();
-		String isoFormat = DateTimeFormatter.ISO_INSTANT.format(now.toInstant(ZoneOffset.UTC));
-		System.out.println(isoFormat);
-		PrintWriter pw = new PrintWriter(new File(isoFormat + ".csv"));
+		PrintWriter pw = new PrintWriter(new File("report-" + Main.reportNumber + ".csv"));
 	    pw.write("Amount of orders for client with Id: " + Id+ " is: " + amount);
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -108,10 +96,8 @@ void totalPrice(boolean c) throws FileNotFoundException{
 		System.out.println("The total value of all orders: " + price.setScale(2).toPlainString());
 	}
 	else{
-		LocalDateTime now = LocalDateTime.now();
-		String isoFormat = DateTimeFormatter.ISO_INSTANT.format(now.toInstant(ZoneOffset.UTC));
-		System.out.println(isoFormat);
-		PrintWriter pw = new PrintWriter(new File(isoFormat + ".csv"));
+	
+		PrintWriter pw = new PrintWriter(new File("report-" + Main.reportNumber  + ".csv"));
 	    pw.write("The total value of all orders: " + price.setScale(2).toPlainString());
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -128,10 +114,8 @@ void totalPriceforClientWithId(String Id, boolean c) throws FileNotFoundExceptio
 		System.out.println("The total value of orders for client with Id: "+ Id+ " is: " + price.setScale(2).toPlainString());
 	}
 	else{
-		LocalDateTime now = LocalDateTime.now();
-		String isoFormat = DateTimeFormatter.ISO_INSTANT.format(now.toInstant(ZoneOffset.UTC));
-		System.out.println(isoFormat);
-		PrintWriter pw = new PrintWriter(new File(isoFormat + ".csv"));
+		
+		PrintWriter pw = new PrintWriter(new File("report-" + Main.reportNumber  + ".csv"));
 	    pw.write("The total value of orders for client with Id: " + Id+ " is: " + price.setScale(2).toPlainString());
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -146,10 +130,7 @@ void printOrdersforClientWithId(String Id,boolean c) throws FileNotFoundExceptio
 		}
 	}
 	else{
-		LocalDateTime now = LocalDateTime.now();
-		String isoFormat = DateTimeFormatter.ISO_INSTANT.format(now.toInstant(ZoneOffset.UTC));
-		System.out.println(isoFormat);
-		PrintWriter pw = new PrintWriter(new File(isoFormat + ".csv"));
+		PrintWriter pw = new PrintWriter(new File("report-" + Main.reportNumber + ".csv"));
 		StringBuilder sb = new StringBuilder();
 	    sb.append("Orders for client with Id: " + Id + " : ");
 	    sb.append("\n");
@@ -176,10 +157,7 @@ void averageOrderPrice(boolean c) throws FileNotFoundException{
 		System.out.println("Average order value: " + (price.divide(new BigDecimal(amount), 2, RoundingMode.HALF_UP)));
 	}
 	else{
-		LocalDateTime now = LocalDateTime.now();
-		String isoFormat = DateTimeFormatter.ISO_INSTANT.format(now.toInstant(ZoneOffset.UTC));
-		System.out.println(isoFormat);
-		PrintWriter pw = new PrintWriter(new File(isoFormat + ".csv"));
+		PrintWriter pw = new PrintWriter(new File("report-" + Main.reportNumber + ".csv"));
 	    pw.write("Average order value: "  + (price.divide(new BigDecimal(amount), 2, RoundingMode.HALF_UP)));
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -200,10 +178,7 @@ void averageOrderPriceforClientWithId(String Id,boolean c) throws FileNotFoundEx
 		System.out.println("Average order value for client with Id: " + Id + " is: " + (price.divide(new BigDecimal(amount + ".00"), 2, RoundingMode.HALF_UP)));
 	}
 	else{
-		LocalDateTime now = LocalDateTime.now();
-		String isoFormat = DateTimeFormatter.ISO_INSTANT.format(now.toInstant(ZoneOffset.UTC));
-		System.out.println(isoFormat);
-		PrintWriter pw = new PrintWriter(new File(isoFormat + ".csv"));
+		PrintWriter pw = new PrintWriter(new File("report-" + Main.reportNumber + ".csv"));
 	    pw.write("Average order value for client with Id: " + Id + " is: " + (price.divide(new BigDecimal(amount + ".00"), 2, RoundingMode.HALF_UP)));
 	    pw.close();
 	    System.out.println("Csv file created");
