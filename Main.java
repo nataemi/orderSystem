@@ -7,11 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-//import java.time.LocalDateTime;
-//import java.time.ZoneOffset;
-//import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main {
 
@@ -49,8 +48,8 @@ void printOrders(boolean c) throws FileNotFoundException{
 		}
 	}
 	else{
-		String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		PrintWriter pw = new PrintWriter(new File(fileSuffix + ".csv"));
+		String fileName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		PrintWriter pw = new PrintWriter(new File(fileName + ".csv"));
 		StringBuilder sb = new StringBuilder();
 	    sb.append("All orders: ");
 	    sb.append("\n");
@@ -66,12 +65,12 @@ void printOrders(boolean c) throws FileNotFoundException{
 
 void amountOfOrders(boolean c) throws FileNotFoundException{
 	if(!c){
-		System.out.println("Amount of orders: " + orders.size());
+		System.out.println("The number of orders: " + orders.size());
 	}
 	else{
-		String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		PrintWriter pw = new PrintWriter(new File(fileSuffix + ".csv"));
-	    pw.write("Amount of orders: " + orders.size());
+		String fileName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		PrintWriter pw = new PrintWriter(new File(fileName + ".csv"));
+	    pw.write("The number of orders: " + orders.size());
 	    pw.close();
 	    System.out.println("Csv file created");
 	}
@@ -83,12 +82,12 @@ void amountOfOrdersForClientWithId(String Id,boolean c) throws FileNotFoundExcep
 		if (o.getClientId().equals(Id)) amount++;
 	}
 	if(!c){
-		System.out.println("Amount of orders for client with Id: " + Id+ " is: " + amount);
+		System.out.println("The number of orders for client with Id: " + Id+ " is: " + amount);
 	}
 	else{
-		String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		PrintWriter pw = new PrintWriter(new File(fileSuffix + ".csv"));
-	    pw.write("Amount of orders for client with Id: " + Id+ " is: " + amount);
+		String fileName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		PrintWriter pw = new PrintWriter(new File(fileName + ".csv"));
+	    pw.write("The number of orders for client with Id: " + Id+ " is: " + amount);
 	    pw.close();
 	    System.out.println("Csv file created");
 	}
@@ -103,8 +102,8 @@ void totalPrice(boolean c) throws FileNotFoundException{
 		System.out.println("The total value of all orders: " + price.setScale(2).toPlainString());
 	}
 	else{
-		String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		PrintWriter pw = new PrintWriter(new File(fileSuffix + ".csv"));
+		String fileName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		PrintWriter pw = new PrintWriter(new File(fileName + ".csv"));
 	    pw.write("The total value of all orders: " + price.setScale(2).toPlainString());
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -121,8 +120,8 @@ void totalPriceforClientWithId(String Id, boolean c) throws FileNotFoundExceptio
 		System.out.println("The total value of orders for client with Id: "+ Id+ " is: " + price.setScale(2).toPlainString());
 	}
 	else{
-		String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		PrintWriter pw = new PrintWriter(new File(fileSuffix + ".csv"));
+		String fileName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		PrintWriter pw = new PrintWriter(new File(fileName + ".csv"));
 	    pw.write("The total value of orders for client with Id: " + Id+ " is: " + price.setScale(2).toPlainString());
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -137,8 +136,8 @@ void printOrdersforClientWithId(String Id,boolean c) throws FileNotFoundExceptio
 		}
 	}
 	else{
-		String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		PrintWriter pw = new PrintWriter(new File(fileSuffix + ".csv"));
+		String fileName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		PrintWriter pw = new PrintWriter(new File(fileName + ".csv"));
 		StringBuilder sb = new StringBuilder();
 	    sb.append("Orders for client with Id: " + Id + " : ");
 	    sb.append("\n");
@@ -165,8 +164,8 @@ void averageOrderPrice(boolean c) throws FileNotFoundException{
 		System.out.println("Average order value: " + (price.divide(new BigDecimal(amount), 2, RoundingMode.HALF_UP)));
 	}
 	else{
-		String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		PrintWriter pw = new PrintWriter(new File(fileSuffix + ".csv"));
+		String fileName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		PrintWriter pw = new PrintWriter(new File(fileName + ".csv"));
 	    pw.write("Average order value: "  + (price.divide(new BigDecimal(amount), 2, RoundingMode.HALF_UP)));
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -187,8 +186,8 @@ void averageOrderPriceforClientWithId(String Id,boolean c) throws FileNotFoundEx
 		System.out.println("Average order value for client with Id: " + Id + " is: " + (price.divide(new BigDecimal(amount + ".00"), 2, RoundingMode.HALF_UP)));
 	}
 	else{
-		String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		PrintWriter pw = new PrintWriter(new File(fileSuffix + ".csv"));
+		String fileName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		PrintWriter pw = new PrintWriter(new File(fileName + ".csv"));
 	    pw.write("Average order value for client with Id: " + Id + " is: " + (price.divide(new BigDecimal(amount + ".00"), 2, RoundingMode.HALF_UP)));
 	    pw.close();
 	    System.out.println("Csv file created");
@@ -205,13 +204,13 @@ return false;
 }
 
 boolean checkIfCSV(){
-	System.out.print("Would you like to generate a csv file? T/N ");
+	System.out.print("Would you like to generate a csv file? Y/N ");
 	Scanner Scanning = new Scanner(System.in);
 	String s1 = Scanning.nextLine();
-	if (s1.equals("T")){
+	if (s1.equals("Y") || s1.equals("y")){
 		return true;
 	}
-	else if(s1.equals("N")){
+	else if(s1.equals("N") || s1.equals("n")){
 		return false;
 	}
 	else{
@@ -238,16 +237,16 @@ public static void main (String args[]) throws IOException{
 	    String[] sar = s1.split(" ");
 	    switch (sar[0]){
 		    case "help":{
-		        System.out.println("Wpisz odpowiednią komendę, aby wygenerować raport:");
-		        System.out.println("sumOrders - Łączna ilość zamówień");
-		        System.out.println("sumOrders id - Łączna ilość zamówień dla klienta o wskazanym Id");
-		        System.out.println("sumAmount - Łączna kwota zamówień");
-		        System.out.println("sumAmount id - Łączna kwota zamówień dla klienta o wskazanym Id");
-		        System.out.println("list - Lista wszystkich zamówień");
-		        System.out.println("list id - Lista wszystkich zamówień dla klienta o wskazanym Id");
-		        System.out.println("avg - Średnia wartość zamówienia");
-		        System.out.println("avg id - Średnia wartość zamówienia dla klienta o wskazanym Id");
-		        System.out.println("exit - Zakończ działanie aplikacji");
+		        System.out.println("Input correct command to generate a report:");
+		        System.out.println("sumOrders - The number of orders");
+		        System.out.println("sumOrders [id] - The number of orders for client with Id");
+		        System.out.println("sumAmount - The total value of all orders");
+		        System.out.println("sumAmount [id] - The total value of orders for client with Id");
+		        System.out.println("list - List of orders");
+		        System.out.println("list [id] - List of orders for client with Id");
+		        System.out.println("avg - Average value of orders");
+		        System.out.println("avg [id] - Average value of orders for client with Id");
+		        System.out.println("exit - End the application");
 		        System.out.println(" ");
 		        break;}
 		    case "sumOrders": {
@@ -331,8 +330,6 @@ public static void main (String args[]) throws IOException{
 	
 }
 }
-
-
 
 
 
