@@ -1,1 +1,1 @@
-java -jar target/rekrutacyjne\cf3 -0.0.1\cf2 -SNAPSHOT-jar-with-dependencies.jar $*}
+java -jar target/rekrutacyjne-0.0.1-SNAPSHOT-jar-with-dependencies.jar %*
