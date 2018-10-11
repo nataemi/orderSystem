@@ -1,1 +1,1 @@
-javac *.java
+mvn clean install
