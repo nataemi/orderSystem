@@ -114,7 +114,7 @@ try {
 			}//end of if clause
 
 		if (correct) orders.add(emp);
-		else System.out.println("Pominieto linie pliku xml");
+		else System.out.println("Incorrect line ommited in XML file");
 	}//end of for loop with s var
 
 

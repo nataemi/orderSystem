@@ -90,11 +90,11 @@ public class ReadCSV {
 					}
 				}
 				else{
-					System.out.print("Nieprawidlowy format: " + line + "\n");
+					System.out.print("Incorrect format: " + line + "\n");
 				}
 			}
 			if (linecount>0 & correct == true)orders.add(emp);
-			if (correct == false) System.out.println("Nieprawidłowe dane: " + line);
+			if (correct == false) System.out.println("Incorrect data: " + line);
 			linecount++;
 		
 		}
