@@ -221,9 +221,6 @@ boolean checkIfCSV(){
 
 
 public static void main (String args[]) throws IOException{
-	/*String csvName = "/Users/natalia/Documents/workspace/rekrutacyjne/src/zamowienie.csv";
-	String xmlName = "/Users/natalia/Documents/workspace/rekrutacyjne/src/zamowienie.xml";
-	String[] ar = {csvName, xmlName};*/
 	Main main = new Main(args);
 	System.out.println(" Welcome to the order system! \n");
     Scanner Scan = new Scanner(System.in);
